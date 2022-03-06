@@ -1,0 +1,1 @@
+[{"titulo": "Televisor", "precio": 599, "thumbnail": "https://i.blogs.es/fc07f2/samsungoled/450_1000.jpeg", "id": 0},{"titulo": "Celular", "precio": 699, "thumbnail": "https://i.blogs.es/fc07f2/samsungoled/450_1000.jpeg", "id": 1},{"titulo": "Notebook", "precio": 1099, "thumbnail": "https://i.blogs.es/fc07f2/samsungoled/450_1000.jpeg", "id": 2}]
