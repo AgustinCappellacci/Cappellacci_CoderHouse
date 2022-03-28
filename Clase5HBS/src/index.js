@@ -27,7 +27,15 @@ router.get("/", (req,res)=>{
     let customerFile;
     try {
         customerFile = JSON.parse(fs.readFileSync("./public/productos.txt", "utf-8"));
-        res.render('tabla', { customerFile });
+        if(customerFile[1]){
+            res.render('tabla', { customerFile });
+        } else {
+            a = customerFile;
+            customerFile = [];
+            customerFile.push(a);
+            res.render('tabla', { customerFile });
+        }
+        
     }
     catch {
         res.status(200).send("No hay productos para mostrar")}
