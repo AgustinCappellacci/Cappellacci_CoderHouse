@@ -24,6 +24,7 @@ io.on("connection", (socket) => {
         data.date = dateTime;
         console.log(data);
         messages.push(data);
+        fs.writeFileSync("./public/mensajes.txt", JSON.stringify(messages));
         // io.sockets.emit("message", data);
         io.sockets.emit("messageBack", messages);
       });
