@@ -57,10 +57,11 @@
       let innerText =''
       data.map((message)=>{
         innerText+=`
+        //El formato visual cambia dependiendo de si el mensaje es propio o de un tercero, por eso se llama a la funcion classMensaje
         <div class="${classMensaje(message.author, usuario)}"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
             <div class="media-body">
                 <p class="meta"><FONT COLOR="#2159ff"><b>${message.mail}</b></FONT></p>
-                <p><i>${message.text}</i></p>
+                <p><i>${message.text}</i></p> //Podria cambiar el color del mensaje a marron y de la fecha a verde pero queda tan feo que preferi dejarlo asi
                 <p class="meta"><time datetime="2018"><FONT COLOR="#a3a3a3">${message.date}</FONT></time></p>
             </div>
         </div>
