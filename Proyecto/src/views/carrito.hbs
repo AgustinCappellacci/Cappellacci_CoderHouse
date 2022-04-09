@@ -1,0 +1,31 @@
+<h2>Productos Guardados</h2>
+
+{{!-- <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card card-bordered" id="cardd"> --}}
+<table class="table table-striped table-dark">
+  <tr>
+    <th>Nombre</th>
+    <th>Precio</th> 
+  </tr>
+  {{#each carrito}}
+  <tr>
+    <td>{{this.Nombre}}</td>
+    <td>{{this.Precio}}</td> 
+  </tr>
+  {{/each}}
+</table>
+<form method="get" action="/">
+    <button type="submit" class="btn btn-primary">Volver al Formulario</button>
+</form>
+<form method="get" action="/productos">
+    <button type="submit" class="btn btn-primary">Volver a ver Productos</button>
+</form>
+
+                    {{!-- </div>
+                </div>
+            </div>
+        </div>
+  </div> --}}

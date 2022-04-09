@@ -1,0 +1,70 @@
+<div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card card-bordered" id="cardd">
+                      <div class="card-header" id="divclassheaderchat" style="padding-left: 35% !important;">
+                            <h4 class="card-title"><FONT COLOR="#fff"><strong>Productos Guardados</strong></FONT></h4>
+                        </div>
+<table class="table table-striped table-dark" style="background-color:#bdd5ff">
+  <tr style="background-color:#bdd5ff !important; border-width: 0px !important">
+    <th style="border-color: #94bbff">Nombre</th>
+    <th style="border-color: #94bbff">Precio</th> 
+    <th style="border-color: #94bbff">Thumbnail</th>
+    <th style="border-color: #94bbff">Comprar</th>
+  </tr>
+  {{#each customerFile}}
+  <tr>
+    <td style="border-color: #94bbff">{{this.Nombre}}</td>
+    <td style="border-color: #94bbff">{{this.Precio}}</td> 
+    <td style="border-color: #94bbff"><img src="./{{this.url}}" class="img-fluid" alt="Responsive image"></img></td>
+    <td style="border-color: #94bbff"><button class="btn btn-primary" onclick="addToCart({{this.id}})">Agregar a carrito</button></td>
+  </tr>
+  {{/each}}
+</table>
+<form id="formVerCarrito" method="get" action="/carrito" style="text-align: center">
+<div class="notification" style="background-color:#bdd5ff">
+    <button type="submit" class="btn btn-primary">Ver carrito de compras</button> <span class="badge" id="elementosencarrito"></span>
+</div>
+</form>
+<form method="get" action="/" style="text-align: center; padding-bottom:2%">
+    <button type="submit" class="btn btn-primary">Volver al Formulario</button>
+</form>
+
+<button class="btn btn-primary" onclick="crearCarrito()">Crear carrito</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+
+<script>
+  const socket = io()
+  let idConexion = socket.id;
+  
+
+  function addToCart(id){
+      let idConexion = socket.id;
+      socket.emit('agregarCarrito',{
+        id,
+        idConexion,      
+     })
+    }
+
+  function crearCarrito(){
+      let idConexion = socket.id;
+      socket.emit('crearCarrito',{
+        idConexion,      
+     })
+    }
+  
+  socket.on("actualizarBadge", (data) => {
+    document.getElementById('elementosencarrito').innerText = data.elementosCarrito;
+  })
+
+  socket.on("errorCrearCarrito", (data) => {
+    alert(data.alerta);
+  })
+  
+</script>
