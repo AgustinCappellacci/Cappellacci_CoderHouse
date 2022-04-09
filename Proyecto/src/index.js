@@ -11,6 +11,7 @@ const io = new Server(server);
 const messages = [];
 const carrito = [];
 let listaCarrito = new Object();
+let isAdmin = true;
 
 io.on("connection", (socket) => {
     console.log("💻 Nuevo usuario conectado!");
@@ -127,6 +128,7 @@ router.get("/:id", (req,res)=>{
 })
 
 router.post("/", (req,res)=>{
+if (isAdmin === true){
     try{
         let customerFile = JSON.parse(fs.readFileSync("./public/productos.txt", "utf-8"));
         if (customerFile[1]){
@@ -149,6 +151,9 @@ router.post("/", (req,res)=>{
         req.body.id = 0;
         fs.writeFileSync("./public/productos.txt", JSON.stringify(req.body));
         res.render('cargaexitosa', {});
+    }}
+    else{
+        res.render('main', {})
     }
 })
 
