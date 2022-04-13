@@ -1,1 +1,0 @@
-[{"Nombre":"iphone","Precio":"699","url":"iphone.jpg","id":0},{"Nombre":"samsung","Precio":"1099","url":"samsung.jpg","id":1},{"Nombre":"pixel","Precio":"799","url":"pixel.jpg","id":2}]
